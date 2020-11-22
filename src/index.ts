@@ -11,6 +11,7 @@ async function main(): Promise<void> {
 		provider: new WsProvider(NODE_WS_URL),
 	});
 
+	// Specifying this function will become a CLI argument
 	const nominators = await getNominators(api, VALIDATOR_ID);
 	console.log(nominators);
 

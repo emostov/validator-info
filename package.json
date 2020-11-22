@@ -1,4 +1,12 @@
 {
+  "name": "validator-info",
+  "version": "0.1.0",
+  "author": "Zeke Mostov <32168567+emostov@users.noreply.github.com>",
+  "license": "Apache-2.0",
+  "private": false,
+  "scripts": {
+    "lint": "tsc --noEmit && eslint . --ext ts"
+  },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.8.1",
     "@typescript-eslint/parser": "^4.8.1",
@@ -8,5 +16,8 @@
     "eslint-plugin-simple-import-sort": "^6.0.1",
     "prettier": "^2.2.0",
     "typescript": "^4.1.2"
+  },
+  "dependencies": {
+    "@polkadot/api": "^2.7.1"
   }
 }

@@ -20,8 +20,7 @@ interface NominatingValidator {
 export async function getNominators(
 	api: ApiPromise,
 	validatorId: string
-	// ): Promise<NominatingValidator> {
-): Promise<any> {
+): Promise<NominatingValidator> {
 	const [ledgerEntries, nominatorsEntries] = await Promise.all([
 		await api.query.staking.ledger.entries(),
 		await api.query.staking.nominators.entries(),

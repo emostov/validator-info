@@ -12,7 +12,7 @@
     "start": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
     "build": "tsc",
     "local": "yarn build && npm i -g && val-info",
-    "clean": "rm -rf ./node_modules ./package-lock.json ./lib && yarn install",
+    "clean": "rm -rf ./node_modules ./yarn.lock ./lib && yarn install",
     "lint": "tsc --noEmit && eslint . --ext ts"
   },
   "devDependencies": {
@@ -36,7 +36,6 @@
     "clear": "^0.1.0",
     "commander": "^6.2.0",
     "figlet": "^1.5.0",
-    "inquirer": "^7.3.3",
     "path": "^0.12.7",
     "ts-node": "^9.0.0"
   }

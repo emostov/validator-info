@@ -9,7 +9,7 @@ A CLI tool for quickly getting info about validators from a substrate based chai
 
 2) Locally install the CLI bin and start up with help menu: `yarn local`
 
-3) Use the cli `val-info -noms HngUT2inDFPBwiey6ZdqhhnmPKHkXayRpWw9rFj55reAqvi` which should output something like
+3) Use the cli: `val-info -noms HngUT2inDFPBwiey6ZdqhhnmPKHkXayRpWw9rFj55reAqvi` which should output something like
       ```bash
       {
         nominators: [

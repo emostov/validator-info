@@ -12,9 +12,6 @@ import { getNominators } from './getNominators';
 
 const WS_URL = process.env.WS_URL || 'ws://127.0.0.1:9944';
 
-/// This will become a CLI argument
-const VALIDATOR_ID = 'HngUT2inDFPBwiey6ZdqhhnmPKHkXayRpWw9rFj55reAqvi';
-
 async function main(): Promise<void> {
 	const api = await ApiPromise.create({
 		provider: new WsProvider(WS_URL),

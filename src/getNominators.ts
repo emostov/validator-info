@@ -20,9 +20,12 @@ interface NominatingValidator {
 export async function getNominators(
 	api: ApiPromise,
 	validatorId: string
-): Promise<NominatingValidator> {
-	const ledgerEntries = await api.query.staking.ledger.entries();
-	const nominatorsEntries = await api.query.staking.nominators.entries();
+	// ): Promise<NominatingValidator> {
+): Promise<any> {
+	const [ledgerEntries, nominatorsEntries] = await Promise.all([
+		await api.query.staking.ledger.entries(),
+		await api.query.staking.nominators.entries(),
+	]);
 
 	const nominators = nominatorsEntries
 		.filter(
@@ -35,7 +38,7 @@ export async function getNominators(
 		)
 		.map(([storageKey, _optNominations]) => {
 			const nominatorId = storageKey.args[0];
-			const ledgerOrUndefined = ledgerEntries.find(
+			const keyAndLedgerOrUndefined = ledgerEntries.find(
 				// The Ledger map is keyed by controller address, so we iterate through the ledgers and
 				// identify the correct one by stash property
 				([_storageKey, optStakingLedger]) =>
@@ -43,8 +46,8 @@ export async function getNominators(
 					optStakingLedger.unwrap().stash.toHex() === nominatorId.toHex()
 			);
 
-			const active = ledgerOrUndefined
-				? ledgerOrUndefined[1].unwrap().active.unwrap().toString(10)
+			const active = keyAndLedgerOrUndefined
+				? keyAndLedgerOrUndefined[1].unwrap().active.unwrap().toString(10)
 				: undefined;
 
 			return {
@@ -60,7 +63,6 @@ export async function getNominators(
 			new BN(0)
 		)
 		.toString(10);
-
 	return {
 		nominators,
 		nominatorsActiveSum,

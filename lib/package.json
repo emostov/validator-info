@@ -1,0 +1,43 @@
+{
+    "name": "@zekemostov/validator-info",
+    "version": "0.1.0",
+    "author": "Zeke Mostov <32168567+emostov@users.noreply.github.com>",
+    "license": "Apache-2.0",
+    "private": false,
+    "main": "./lib/src/index.js",
+    "bin": {
+        "val-info": "./lib/src/index.js"
+    },
+    "scripts": {
+        "start": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
+        "build": "tsc",
+        "local": "yarn build && npm i -g && val-info",
+        "clean": "rm -rf ./node_modules ./package-lock.json ./lib && yarn install",
+        "lint": "tsc --noEmit && eslint . --ext ts"
+    },
+    "devDependencies": {
+        "@types/clear": "^0.1.0",
+        "@types/figlet": "^1.2.1",
+        "@typescript-eslint/eslint-plugin": "^4.8.1",
+        "@typescript-eslint/parser": "^4.8.1",
+        "eslint": "^7.14.0",
+        "eslint-config-prettier": "^6.15.0",
+        "eslint-plugin-prettier": "^3.1.4",
+        "eslint-plugin-simple-import-sort": "^6.0.1",
+        "nodemon": "^2.0.6",
+        "prettier": "^2.2.0",
+        "typescript": "^4.1.2"
+    },
+    "dependencies": {
+        "@polkadot/api": "^2.7.1",
+        "@types/node": "^14.14.9",
+        "bn.js": "^5.1.3",
+        "chalk": "^4.1.0",
+        "clear": "^0.1.0",
+        "commander": "^6.2.0",
+        "figlet": "^1.5.0",
+        "inquirer": "^7.3.3",
+        "path": "^0.12.7",
+        "ts-node": "^9.0.0"
+    }
+}
